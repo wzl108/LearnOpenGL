@@ -1,6 +1,8 @@
 #include <glad/glad.h>
 #include <glfw3.h>
 #include <iostream>
+#include <vector>
+using namespace std;
 
 
 int shaderProgram;
@@ -22,10 +24,13 @@ const char *vertexShaderSource = "#version 330 core\n"
 "}\0";
 const char *fragmentShaderSource = "#version 330 core\n"
 "out vec4 FragColor;\n"
+"uniform vec4 ourColor;\n"
 "void main()\n"
 "{\n"
-"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"   FragColor = ourColor;\n"
 "}\n\0";
+
+
 
 
 int main()
@@ -74,6 +79,14 @@ void MainLoop()
 
 		// 2. 当我们渲染一个物体时要使用着色器程序
 		glUseProgram(shaderProgram);
+
+		// 更新uniform颜色
+		float timeValue = glfwGetTime();
+		float greenValue = sin(timeValue) / 2.0f + 0.5f;
+		int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+		glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+
+
 		glBindVertexArray(VAO);
 		// 3. 绘制物体
 		glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -84,8 +97,8 @@ void MainLoop()
 		glfwSwapBuffers(window);
 
 	}
-
 }
+
 
 void VertexConfig()
 {
@@ -117,8 +130,6 @@ void VertexConfig()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 }
-
-
 
 void buidAndCompilerShader()
 {
@@ -174,7 +185,7 @@ int OpenGLInit()
 	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	//创建窗口对象
-	window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+	window = glfwCreateWindow(640, 360, "LearnOpenGL", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -191,7 +202,11 @@ int OpenGLInit()
 	}
 
 	//设置视口
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, 640, 360);
 	//注册窗口大小变换时的回调
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+
+
 }
+
