@@ -2,6 +2,7 @@
 #include <glfw3.h>
 #include <iostream>
 #include <vector>
+#include <../Test/LearnOpenGLTest2/LearnOpenGLTest2/Shader.h>
 using namespace std;
 
 
@@ -64,6 +65,10 @@ void processInput(GLFWwindow *window)
 
 void MainLoop()
 {
+
+	Shader ourShader("../Shaders/TestShader.vs", "../Shaders/TestShader.ts");
+
+
 	//进入渲染循环
 	while (!glfwWindowShouldClose(window))
 	{
@@ -78,13 +83,18 @@ void MainLoop()
 		buidAndCompilerShader();
 
 		// 2. 当我们渲染一个物体时要使用着色器程序
-		glUseProgram(shaderProgram);
-
-		// 更新uniform颜色
+		//glUseProgram(shaderProgram);
+		ourShader.use();
+		
 		float timeValue = glfwGetTime();
 		float greenValue = sin(timeValue) / 2.0f + 0.5f;
+		ourShader.setFloat("testColor", greenValue);
+
+		// 更新uniform颜色
+		/*float timeValue = glfwGetTime();
+		float greenValue = sin(timeValue) / 2.0f + 0.5f;
 		int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
-		glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+		glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);*/
 
 
 		glBindVertexArray(VAO);
