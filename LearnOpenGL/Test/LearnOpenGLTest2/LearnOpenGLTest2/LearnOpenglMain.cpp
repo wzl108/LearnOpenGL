@@ -1,12 +1,17 @@
 #include <glad/glad.h>
 #include <glfw3.h>
 #include <iostream>
-#include <vector>
-#include <filesystem>
 #include "Shader.h"
 #include "stb_image.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 using namespace std;
 
+
+// settings
+const unsigned int SCR_WIDTH = 640;
+const unsigned int SCR_HEIGHT = 360;
 
 int shaderProgram;
 GLFWwindow* window;
@@ -23,11 +28,6 @@ int main()
 {
 	
 	OpenGLInit();
-	
-
-	//顶点属性配置 
-	//VertexConfig();
-	//TextureConfig();
 	
 	//进入渲染主循环
 	MainLoop();
@@ -177,21 +177,30 @@ void MainLoop()
 		//检测按键
 		processInput(window);
 
-		// 2. 当我们渲染一个物体时要使用着色器程序
-		//float offset = 0.5f;
-		//ourShader.setFloat("xOffset", offset);
-		//ourShader.use();
-
-		//glBindVertexArray(VAO);
-
-
-	
 		// 更新uniform颜色
 		/*float timeValue = glfwGetTime();
 		float greenValue = sin(timeValue) / 2.0f + 0.5f;
 		int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
 		glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);*/
 
+		glm::mat4 model = glm::mat4(1.0f);
+		model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+
+		glm::mat4 view = glm::mat4(1.0f);
+		// 注意，我们将矩阵向我们要进行移动场景的反方向移动。
+		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+
+		glm::mat4 projection = glm::mat4(1.0f);
+		projection = glm::perspective(glm::radians(45.0f), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+	
+		int modelLoc = glGetUniformLocation(ourShader.ID, "model");
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		int modelLoc = glGetUniformLocation(ourShader.ID, "view");
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(view));
+		int modelLoc = glGetUniformLocation(ourShader.ID, "projection");
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+		ourShader.setMat4("projection", projection);
 		// render container
 		ourShader.use();
 		glBindVertexArray(VAO);
@@ -204,7 +213,6 @@ void MainLoop()
 		// 检查并调用事件，交换缓冲
 		glfwPollEvents();
 		glfwSwapBuffers(window);
-
 	}
 }
 
@@ -280,7 +288,6 @@ void TextureConfig()
 }
 
 
-
 int OpenGLInit()
 {
 	// glfw配置      Tips: glfw是用来设置OpenGL content的库
@@ -311,8 +318,5 @@ int OpenGLInit()
 	glViewport(0, 0, 640, 360);
 	//注册窗口大小变换时的回调
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
-
-
 }
 
