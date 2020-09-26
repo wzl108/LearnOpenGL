@@ -7,3 +7,6 @@ LearnOpenGL/Test/LearnOpenGLTest/Debug/
 LearnOpenGL/Test/LearnOpenGLTest2/LearnOpenGLTest2/x64/
 LearnOpenGL/Test/LearnOpenGLTest2/LearnOpenGLTest2/x64/Debug/
 LearnOpenGL/Test/LearnOpenGLTest2/x64/Debug/LearnOpenGLTest2.pdb
+LearnOpenGL/Game/BreakOut/.vs/BreakOut/v16/.suo
+*.db
+*.ipch
