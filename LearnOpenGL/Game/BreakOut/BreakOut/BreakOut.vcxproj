@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\MyProjects\GitHub\LearnOpenGL\LearnOpenGL\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\MyProjects\GitHub\LearnOpenGL\LearnOpenGL\Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
