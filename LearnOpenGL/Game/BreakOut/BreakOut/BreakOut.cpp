@@ -6,28 +6,197 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
+#ifdef USE_SDL
+
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
+
+#elif USE_OPENGL
+
 #include <glad/glad.h>
 #include <glfw3.h>
+
+#endif 
+
 
 #include "Game.h"
 #include "ResourceManager.h"
 
 #include <iostream>
+using namespace std;
 
 // GLFW function declerations
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
-void init_opengl();
+int opengl_main();
+int sdl_main(int argc, char* argv[]);
+
+SDL_Texture* LoadTexture(const std::string& file, SDL_Renderer* ren);
+void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y, int w, int h);
+void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y);
+void CleanUp(SDL_Window* window, SDL_Renderer* render, SDL_Texture* texture);
 
 // The Width of the screen
-const unsigned int SCREEN_WIDTH = 800;
+const unsigned int SCREEN_WIDTH = 640;
 // The height of the screen
-const unsigned int SCREEN_HEIGHT = 600;
+const unsigned int SCREEN_HEIGHT = 360;
 
 Game Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
 
+
 int main(int argc, char* argv[])
 {
+#ifdef USE_OPENGL
+
+    opengl_main();
+
+#elif USE_SDL
+
+    sdl_main(argc, argv);
+
+#endif
+
+    return 0;
+}
+
+
+
+int sdl_main(int argc, char* argv[])
+{
+    //启动SDL
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+    {
+        std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
+        return 1;
+    }
+
+    SDL_Window* window = SDL_CreateWindow("Hello World!", 500, 100, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    if (window == nullptr) {
+        cout << "SDL_CreateWindow Error: " << SDL_GetError();
+        SDL_Quit();
+        return 1;
+    }
+
+    SDL_Renderer* render = SDL_CreateRenderer(window, -1, 0);
+    if (render == NULL)
+    {
+        cout << "creat render error\n";
+        return false;
+    }
+
+    if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) {
+        cout << "SDL_Image error";
+        SDL_Quit();
+        return 1;
+    }
+
+    SDL_Texture* hello = LoadTexture("textures/background.bmp", render);
+    if (hello == nullptr) 
+    {
+        CleanUp(window, render, hello);
+        IMG_Quit();
+        SDL_Quit();
+        return 1;
+    }
+
+
+    SDL_Event e;
+    bool quit = false;
+    while (!quit) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) {
+                quit = true;
+            }
+            if (e.type == SDL_KEYDOWN) {
+                quit = true;
+            }
+            if (e.type == SDL_MOUSEBUTTONDOWN) {
+                quit = true;
+            }
+        }
+
+        //Render the scene
+        SDL_RenderClear(render);
+        RenderTexture(hello, render, 0, 0);
+        SDL_RenderPresent(render);
+    }
+
+
+    CleanUp(window, render, hello);
+    IMG_Quit();
+    SDL_Quit();
+}
+
+
+
+/**
+* Loads an image into a texture on the rendering device
+* @param file The image file to load
+* @param ren The renderer to load the texture onto
+* @return the loaded texture, or nullptr if something went wrong.
+*/
+SDL_Texture* LoadTexture(const std::string& file, SDL_Renderer* ren) 
+{
+    SDL_Texture* texture = IMG_LoadTexture(ren, file.c_str());
+    if (texture == nullptr)
+    {
+        cout << "create texture error";
+    }
+
+    return texture;
+}
+
+
+/**
+* Draw an SDL_Texture to an SDL_Renderer at position x, y, with some desired
+* width and height
+* @param tex The source texture we want to draw
+* @param ren The renderer we want to draw to
+* @param x The x coordinate to draw to
+* @param y The y coordinate to draw to
+* @param w The width of the texture to draw
+* @param h The height of the texture to draw
+*/
+void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y, int w, int h) 
+{
+    //Setup the destination rectangle to be at the position we want
+    SDL_Rect dst;
+    dst.x = x;
+    dst.y = y;
+    dst.w = w;
+    dst.h = h;
+    SDL_RenderCopy(ren, tex, NULL, &dst);
+}
+
+/**
+* Draw an SDL_Texture to an SDL_Renderer at position x, y, preserving
+* the texture's width and height
+* @param tex The source texture we want to draw
+* @param ren The renderer we want to draw to
+* @param x The x coordinate to draw to
+* @param y The y coordinate to draw to
+*/
+void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y) 
+{
+    int w, h;
+    SDL_QueryTexture(tex, NULL, NULL, &w, &h);
+    RenderTexture(tex, ren, x, y, w, h);
+}
+
+void CleanUp(SDL_Window *window, SDL_Renderer* render, SDL_Texture* texture)
+{
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(render);
+    SDL_DestroyTexture(texture);
+}
+
+
+
+
+
+int opengl_main()
+{
+
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -95,8 +264,8 @@ int main(int argc, char* argv[])
     // delete all resources as loaded using the resource manager
     // ---------------------------------------------------------
     ResourceManager::Clear();
-
     glfwTerminate();
+
     return 0;
 }
 

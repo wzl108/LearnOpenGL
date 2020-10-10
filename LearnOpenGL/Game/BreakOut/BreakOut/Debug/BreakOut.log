@@ -1,29 +1,4 @@
 ﻿  BreakOut.cpp
-D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\BreakOut\BreakOut.cpp(73,28): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-  Game.cpp
-  GameLevel.cpp
-D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\BreakOut\GameLevel.cpp(60,76): warning C4244: “初始化”: 从“unsigned int”转换到“float”，可能丢失数据
-  GameObject.cpp
-  ResourceManager.cpp
-  Shader.cpp
-  SpriteRenderer.cpp
-  stb.image.cpp
-  Texture2D.cpp
-  正在生成代码...
-  glad.c
-glfw3.lib(context.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(context.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(init.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(init.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(input.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(input.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(monitor.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(monitor.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(vulkan.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(vulkan.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(window.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(window.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(win32_init.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_init.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(win32_joystick.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_joystick.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(win32_monitor.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_monitor.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(win32_time.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_time.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(win32_thread.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_thread.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(win32_window.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(win32_window.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(wgl_context.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(wgl_context.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(egl_context.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(egl_context.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-glfw3.lib(osmesa_context.obj) : warning LNK4099: 未找到 PDB“glfw.pdb”(使用“glfw3.lib(osmesa_context.obj)”或在“D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\glfw.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\BreakOut\BreakOut.cpp(242,28): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\BreakOut\BreakOut.cpp(128): warning C4715: “sdl_main”: 不是所有的控件路径都返回值
   BreakOut.vcxproj -> D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\BreakOut.exe
