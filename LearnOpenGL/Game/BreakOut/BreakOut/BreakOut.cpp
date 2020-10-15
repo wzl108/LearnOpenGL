@@ -29,12 +29,19 @@ using namespace std;
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 int opengl_main();
-int sdl_main(int argc, char* argv[]);
 
+
+
+#ifdef USE_SDL
+
+int sdl_main(int argc, char* argv[]);
 SDL_Texture* LoadTexture(const std::string& file, SDL_Renderer* ren);
 void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y, int w, int h);
 void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y);
 void CleanUp(SDL_Window* window, SDL_Renderer* render, SDL_Texture* texture);
+
+#endif // 
+
 
 // The Width of the screen
 const unsigned int SCREEN_WIDTH = 640;
@@ -60,6 +67,10 @@ int main(int argc, char* argv[])
 }
 
 
+
+
+
+#ifdef USE_SDL
 
 int sdl_main(int argc, char* argv[])
 {
@@ -91,7 +102,7 @@ int sdl_main(int argc, char* argv[])
     }
 
     SDL_Texture* hello = LoadTexture("textures/background.bmp", render);
-    if (hello == nullptr) 
+    if (hello == nullptr)
     {
         CleanUp(window, render, hello);
         IMG_Quit();
@@ -128,14 +139,13 @@ int sdl_main(int argc, char* argv[])
 }
 
 
-
 /**
 * Loads an image into a texture on the rendering device
 * @param file The image file to load
 * @param ren The renderer to load the texture onto
 * @return the loaded texture, or nullptr if something went wrong.
 */
-SDL_Texture* LoadTexture(const std::string& file, SDL_Renderer* ren) 
+SDL_Texture* LoadTexture(const std::string& file, SDL_Renderer* ren)
 {
     SDL_Texture* texture = IMG_LoadTexture(ren, file.c_str());
     if (texture == nullptr)
@@ -145,7 +155,6 @@ SDL_Texture* LoadTexture(const std::string& file, SDL_Renderer* ren)
 
     return texture;
 }
-
 
 /**
 * Draw an SDL_Texture to an SDL_Renderer at position x, y, with some desired
@@ -157,7 +166,7 @@ SDL_Texture* LoadTexture(const std::string& file, SDL_Renderer* ren)
 * @param w The width of the texture to draw
 * @param h The height of the texture to draw
 */
-void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y, int w, int h) 
+void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y, int w, int h)
 {
     //Setup the destination rectangle to be at the position we want
     SDL_Rect dst;
@@ -176,14 +185,14 @@ void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y, int w, int
 * @param x The x coordinate to draw to
 * @param y The y coordinate to draw to
 */
-void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y) 
+void RenderTexture(SDL_Texture* tex, SDL_Renderer* ren, int x, int y)
 {
     int w, h;
     SDL_QueryTexture(tex, NULL, NULL, &w, &h);
     RenderTexture(tex, ren, x, y, w, h);
 }
 
-void CleanUp(SDL_Window *window, SDL_Renderer* render, SDL_Texture* texture)
+void CleanUp(SDL_Window* window, SDL_Renderer* render, SDL_Texture* texture)
 {
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(render);
@@ -193,6 +202,7 @@ void CleanUp(SDL_Window *window, SDL_Renderer* render, SDL_Texture* texture)
 
 
 
+#elif USE_OPENGL
 
 int opengl_main()
 {
@@ -289,3 +299,5 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }
+
+#endif // 
