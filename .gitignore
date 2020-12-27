@@ -42,3 +42,14 @@ LearnOpenGL/Game/BreakOut/BreakOut/Game.cpp
 LearnOpenGL/Game/BreakOut/Debug/BreakOut.exe
 LearnOpenGL/Game/BreakOut/Debug/BreakOut.ilk
 LearnOpenGL/Game/BreakOut/Debug/BreakOut.pdb
+*.tlog
+*.ilk
+*.recipe
+*.pdb
+*.idb
+*.log
+*.ilk
+*.exe
+*.sln
+*.filters
+*.user
