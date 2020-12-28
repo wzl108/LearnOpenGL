@@ -13,13 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\Platform">
+      <UniqueIdentifier>{5984d010-3f9a-4020-8edf-4a43c92457a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Platform">
+      <UniqueIdentifier>{526f7d6f-ca5c-4281-a94b-62dff968090b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\ThirdParty">
+      <UniqueIdentifier>{6a565566-7aec-4d2b-b336-a65dac611ce6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="glad.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="OpenGL.cpp">
+      <Filter>源文件\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>源文件\ThirdParty</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OpenGL.h">
+      <Filter>头文件\Platform</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

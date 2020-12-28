@@ -1,4 +1,0 @@
-﻿  BreakOut.cpp
-D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\BreakOut\BreakOut.cpp(242,28): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\BreakOut\BreakOut.cpp(128): warning C4715: “sdl_main”: 不是所有的控件路径都返回值
-  BreakOut.vcxproj -> D:\Dev\GitHub\LearnOpenGL\LearnOpenGL\Game\BreakOut\Debug\BreakOut.exe
