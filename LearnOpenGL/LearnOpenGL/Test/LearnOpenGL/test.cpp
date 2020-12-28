@@ -4,8 +4,8 @@
 #include<iostream>
 
 
-const int WIDTH  = 1280;
-const int HEIGHT = 720;
+const int WIDTH  = 360;
+const int HEIGHT = 180;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -25,6 +25,7 @@ int main()
         glfwTerminate();
         return -1;
     }
+
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
@@ -45,6 +46,8 @@ int main()
     glfwTerminate();
     return 0;
 }
+
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
