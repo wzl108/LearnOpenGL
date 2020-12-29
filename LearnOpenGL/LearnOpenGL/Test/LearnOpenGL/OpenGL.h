@@ -1,5 +1,5 @@
-#ifndef OPENGL_DEF
-#define OPENGL_DEF
+#ifndef OPENGL_H
+#define OPENGL_H
 
 
 #include<glad/glad.h>

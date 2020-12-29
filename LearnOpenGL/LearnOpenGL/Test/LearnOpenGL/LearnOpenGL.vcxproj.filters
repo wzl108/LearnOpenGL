@@ -16,11 +16,14 @@
     <Filter Include="源文件\Platform">
       <UniqueIdentifier>{5984d010-3f9a-4020-8edf-4a43c92457a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\Platform">
-      <UniqueIdentifier>{526f7d6f-ca5c-4281-a94b-62dff968090b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="源文件\ThirdParty">
       <UniqueIdentifier>{6a565566-7aec-4d2b-b336-a65dac611ce6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ThirdParty">
+      <UniqueIdentifier>{e3d9adb0-bbcc-4b3e-a8b7-88190472a0e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Platform">
+      <UniqueIdentifier>{526f7d6f-ca5c-4281-a94b-62dff968090b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,10 +36,19 @@
     <ClCompile Include="glad.c">
       <Filter>源文件\ThirdParty</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stb.image.cpp">
+      <Filter>源文件\ThirdParty</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenGL.h">
       <Filter>头文件\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>头文件\ThirdParty</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
