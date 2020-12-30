@@ -3,7 +3,9 @@ LearnOpenGL/.vs/
 LearnOpenGL/LearnOpenGL/Test/.vs/
 LearnOpenGL/LearnOpenGL/Test/Debug/
 LearnOpenGL/LearnOpenGL/Test/LearnOpenGL/Debug/
+LearnOpenGL/LearnOpenGL/Test/LearnOpenGL/LearnOpenGL.vcxproj.user
 
 LearnOpenGL/Game/BreakOut/.vs
 LearnOpenGL/Game/BreakOut/Debug/
 LearnOpenGL/Game/BreakOut/BreakOut/Debug/
+LearnOpenGL/Game/BreakOut/BreakOut/BreakOut.vcxproj.user
