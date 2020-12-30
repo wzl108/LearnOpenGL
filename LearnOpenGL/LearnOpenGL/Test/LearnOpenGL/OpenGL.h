@@ -9,8 +9,8 @@
 
 class OpenGL
 {
-	const int WIDTH = 360;
-	const int HEIGHT = 180;
+	const int SCR_WIDTH = 360;
+	const int SCR_HEIGHT = 180;
 
 	GLFWwindow* window;
 
