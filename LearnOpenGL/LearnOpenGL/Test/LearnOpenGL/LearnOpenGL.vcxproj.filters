@@ -42,6 +42,9 @@
     <ClCompile Include="stb.image.cpp">
       <Filter>源文件\ThirdParty</Filter>
     </ClCompile>
+    <ClCompile Include="Camera2d.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenGL.h">
@@ -49,6 +52,12 @@
     </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>头文件\ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera2d.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

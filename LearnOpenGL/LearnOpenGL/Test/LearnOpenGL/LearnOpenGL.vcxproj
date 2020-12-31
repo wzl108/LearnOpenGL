@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera2d.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="Shader.h" />
@@ -26,6 +27,8 @@
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Camera2d.h" />
     <ClInclude Include="OpenGL.h" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>

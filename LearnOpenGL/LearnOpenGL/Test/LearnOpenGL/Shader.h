@@ -109,7 +109,7 @@ public:
         glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
     }
 
-    void SetMatrix4(const char* name, const glm::mat4& matrix, bool useShader)
+    void SetMatrix4(const char* name, const glm::mat4& matrix, bool useShader = false)
     {
         glUniformMatrix4fv(glGetUniformLocation(this->ID, name), 1, false, glm::value_ptr(matrix));
     }
